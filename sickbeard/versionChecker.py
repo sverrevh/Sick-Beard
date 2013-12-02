@@ -425,7 +425,7 @@ class GitUpdateManager(UpdateManager):
         # if we're up to date then don't set this
         sickbeard.NEWEST_VERSION_STRING = None
 
-        if self._num_commits_behind == 100:
+        if self._num_commits_behind < 0: #what the hell? If you are really 100 commitments behind you are out of the sudden ahead?
             newest_text = "You are ahead of " + self.branch + ". Update not possible."
 
         elif self._num_commits_behind > 0:
